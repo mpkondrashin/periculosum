@@ -6,12 +6,15 @@ by Mikhail Kondrashin
 
 This utility by no means detects whenever particular file is dangerous or not, but provides ability to prefilter files before more sofisticated inspection like sandbox analysis or multiscanners.
 
-It heavely dependent on [libmagic](http://www.darwinsys.com/file/) library.
+Its heavely dependent on [libmagic](http://www.darwinsys.com/file/) library.
 
 ## Build
 
+Build makefile and scripts are adopted fo macOS and Linux:
+
 ```code
 git clone https://github.com/mpkondrashin/periculosum.git
+cd periculosum
 make
 ```
 
