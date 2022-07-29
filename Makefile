@@ -15,7 +15,7 @@ process.o: process.cc process.h build/target/include/magic.h
 
 magic.mgc: build/target/bin/file
 	mkdir -p magic
-	for f in $(MGC)
+	for f in ${MGC}
 	do
 		cp build/file/magic/Magdir/$f magic
 	done
