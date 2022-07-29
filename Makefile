@@ -1,9 +1,8 @@
 CC=llvm-g++
-#SHELL = sh -xv
+SHELL = bash
 
 #MGC=magic/animation magic/cafebabe magic/flash magic/msdos magic/pdf magic/sylk magic/archive magic/filesystems magic/mach magic/os2 magic/sgml
-MGC="animation cafebabe flash msdos pdf sylk archive filesystems mach os2 sgml"
-
+MGC=animation cafebabe flash msdos pdf sylk archive filesystems mach os2 sgml
 .PHONY: clean
 
 all: periculosum magic.mgc
@@ -16,9 +15,8 @@ process.o: process.cc process.h build/target/include/magic.h
 
 magic.mgc: build/target/bin/file
 	mkdir -p magic
-	for f in ${MGC}
-	do
-		cp build/file/magic/Magdir/$f magic
+	for f in $(MGC); do \
+		cp build/file/magic/Magdir/$$f magic; \
 	done
 	build/target/bin/file -C -m magic
 
