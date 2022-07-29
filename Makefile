@@ -13,7 +13,7 @@ periculosum: periculosum.cc process.o
 process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
 
-magic.mgc: build/target/bin/file $(MGC)
+magic.mgc: build/target/bin/file
 	mkdir -p magic
 	for f in $(MGC)
 	do
