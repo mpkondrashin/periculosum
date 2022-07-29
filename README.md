@@ -25,4 +25,9 @@ This will generate **periculosum** and **magic.mgc** files.
 periculosum filename
 ```
 
+Exit code will indicate result of check:
 
+- 0 — file is harmless
+- 1 - file of this type can be malicious
+- 2 - command line error
+- 100 - other errors
