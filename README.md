@@ -33,5 +33,6 @@ Exit code will indicate result of check:
 - 100 — other errors
 
 Command line options:
+- **-h** - show help and exit
 - **-l** — log to stderr check operations
 - **-m filename** — provide alternate magic.mgc file (default is the one in same directory as periculosum executable)
