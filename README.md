@@ -18,7 +18,7 @@ cd periculosum
 make
 ```
 
-This will generate periculosum and magic.mgc files.
+This will generate **periculosum** and **magic.mgc** files.
 
 ## Usage
 ```code

@@ -14,6 +14,11 @@ process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
 
 magic.mgc: build/target/bin/file $(MGC)
+	mkdir -p magic
+	for f in $(MGC)
+	do
+		cp build/file/magic/Magdir/$f magic
+	done
 	build/target/bin/file -C -m magic
 
 build/target/bin/file build/target/include/magic.h:
