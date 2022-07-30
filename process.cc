@@ -41,9 +41,15 @@ static const char *mime_types[] = {
     "text/csv",
     "text/html",
     "text/rtf",
+    "text/x-shellscript",
+    "application/x-7z-compressed",
+    "application/gzip",
+    "application/x-tar",
+    "application/vnd.ms-tnef",
     "application/x-mswinurl",
     "text/x-msdos-batch",
     "text/xml",
+    "application/x-executable",
     "video/quicktime"};
 
 //static const char *octet_stream_types[] = {

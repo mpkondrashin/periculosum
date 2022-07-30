@@ -37,5 +37,5 @@ Command line options:
 - **-l** — log to stderr check operations
 - **-m filename** — provide alternate magic.mgc file (default is the one in same directory as periculosum executable)
 
-**Disclamer: if periculosum return 0 exit code, meaning that it assuments that file is harmless
+**Disclamer: if periculosum returns 0 exit code, meaning that it assuments that file is harmless,
 it is by no meanes guarantined.** 
