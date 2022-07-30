@@ -51,7 +51,11 @@ static const char *mime_types[] = {
     "text/x-msdos-batch",
     "text/xml",
     "application/x-executable",
-    "video/quicktime"
+    "video/quicktime",
+    "application/x-rar",
+    "application/vnd.ms-cab-compressed",
+    "application/x-lzh-compressed",
+    "application/vnd.ms-outlook"
 };
 
 static const char *text_plain_types[] = {

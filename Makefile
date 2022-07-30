@@ -24,7 +24,7 @@ build/target/bin/file build/target/include/magic.h:
 	./make_file.sh
 
 testdata/malicious/a.class: testdata.zip
-	unzip -D testdata.zip
+	unzip -DD testdata.zip
 
 test: periculosum $(wildcard magic/*) testdata/malicious/a.class
 	./check.sh
