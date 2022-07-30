@@ -55,7 +55,10 @@ static const char *mime_types[] = {
     "application/x-rar",
     "application/vnd.ms-cab-compressed",
     "application/x-lzh-compressed",
-    "application/vnd.ms-outlook"
+    "application/vnd.ms-outlook",
+    "application/x-msi",
+    "application/x-xz",
+    "application/x-ms-wim"
 };
 
 static const char *text_plain_types[] = {

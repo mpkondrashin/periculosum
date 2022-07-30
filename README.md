@@ -20,6 +20,11 @@ make
 
 This will generate **periculosum** and **magic.mgc** files.
 
+To run tests:
+```code
+make test
+```
+
 ## Usage
 ```code
 periculosum filename
