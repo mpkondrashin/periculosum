@@ -36,6 +36,7 @@ static const char *mime_types[] = {
     "application/x-mach-binary",
     "application/x-shockwave-flash",
     "application/x-sylk",
+    "application/x-bzip2",
     "image/svg+xml",
     "message/rfc822",
     "text/csv",
@@ -50,10 +51,12 @@ static const char *mime_types[] = {
     "text/x-msdos-batch",
     "text/xml",
     "application/x-executable",
-    "video/quicktime"};
+    "video/quicktime"
+};
 
-//static const char *octet_stream_types[] = {
-    //"MS Windows shortcut"};
+static const char *text_plain_types[] = {
+    "uuencoded text"
+};
 
 static const char *octet_stream_extensions[] = {
     ".com" // min/max size
@@ -87,20 +90,20 @@ int check_mime_type(const char *mime_type) {
     }
     return 0;
 }
-/*
-int check_octet_stream_types(const char *type)
+
+int check_text_plain_types(const char *type)
 {
-    for (int i = 0; i < sizeof(octet_stream_types) / sizeof(octet_stream_types[0]); i++)
+    for (int i = 0; i < sizeof(text_plain_types) / sizeof(text_plain_types[0]); i++)
     {
-        if (!strstr(type, octet_stream_types[i]))
+        if (!strncmp(text_plain_types[i], type, strlen(text_plain_types[i])))
         {
-            std::cout << "Supported match type: " << type << std::endl;
+            log_it("Matched text/plain type prefix: %s", text_plain_types[i]);
             return 1;
         }
     }
     return 0;
 }
-*/
+
 int check_extension(const char *list[], int len, const char *filename)
 {
     for (int i = 0; i < len; i++)
@@ -184,7 +187,14 @@ int is_supported(const char * database, const char *filename)
     }
     if (!strcmp(mime, "text/plain"))
     {
-        return check_text_plain_extensions(filename);
+        if (check_text_plain_extensions(filename) ) {
+            return 1;
+        }
+        const char *type  = get_magic(database, filename, 0);
+        if (mime == NULL) {
+            return ERROR_OCCURED;
+        }
+        return check_text_plain_types(type);
     }
     return 0;
 }
