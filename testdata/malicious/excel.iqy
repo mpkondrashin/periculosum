@@ -1,0 +1,13 @@
+WEB
+1
+http://myServer.mydomain/topaz/gdeopenapi/GdeOpenApi?method=getData&user=admin&password=
+admin&query=select time_stamp, engine_name, server_name from rum_server_t where availability=0 and
+total_hits > 0 and time_stamp>1041379200 and time_stamp<1136197020
+
+Selection=EntirePage
+Formatting=None
+PreFormattedTextToColumns=True
+ConsecutiveDelimitersAsOne=False
+SingleBlockTextImport=False
+DisableDateRecognition=False
+DisableRedirections=False

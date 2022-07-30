@@ -1,0 +1,16 @@
+ID;P
+P;PGeneral
+C;Y1;X1;K"Row 1 Left Justify"
+F;P0;FG0L
+C;Y2;X1;K"Row 2 Right Justify"
+F;P0;FG0R
+C;Y3;X1;K"Total at Center"
+F;P0;FG0C
+C;Y1;X2;K11
+C;Y2;X2;K22
+C;Y3;X2;K0;ER1C2+R2C2
+F;Y1;X2;FF2L
+F;Y2;X2;FF2R
+F;Y3;X2;F$2C
+F;W1 2 25
+E

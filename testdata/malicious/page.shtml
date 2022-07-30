@@ -1,0 +1,32 @@
+<!--#jdbc name="result2" select="SELECT * FROM users"
+          user="bmahe" password=""
+          url="jdbc:msql://www43.inria.fr:4333/users"
+          driver="com.imaginary.sql.msql.MsqlDriver"  -->
+
+      <table border=2>
+        <!--#cpt name="cpt1" init="0" -->
+          <tr><td><b>Name </td><td><b>Login</td>
+              <td><b>Email</td><td><b>Age  </td></tr>
+          <!--#loop name="loop2" -->
+
+          <!--#jdbc name="result2" next="true" -->
+
+          <tr>
+            <td>
+              <!--#jdbc name="result2" column="1" -->
+            </td><td>
+              <!--#jdbc name="result2" column="2" -->
+            </td><td>
+              <!--#jdbc name="result2" column="3" -->
+            </td><td>
+              <!--#jdbc name="result2" column="4" -->
+            </td>
+          </tr>
+
+          <!--#cpt name="cpt1" incr="1" -->
+          <!--#exitloop name="loop2" command="cpt" var="cpt1" equals="3" -->
+          <!--#endloop name="loop2" -->
+
+      </table>
+
+      counter value : <!--#cpt name="cpt1" value="true" -->
