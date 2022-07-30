@@ -23,7 +23,10 @@ magic.mgc: build/target/bin/file
 build/target/bin/file build/target/include/magic.h:
 	./make_file.sh
 
-test: periculosum $(wildcard magic/*)
+testdata/malicious/a.class: testdata.zip
+	unzip testdata.zip
+
+test: periculosum $(wildcard magic/*) testdata/malicious/a.class
 	./check.sh
 
 clean:
