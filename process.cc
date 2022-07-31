@@ -16,49 +16,50 @@ const char *last_error() {
 }
 
 static const char *mime_types[] = {
+    "application/gzip",
     "application/java-archive",
     "application/msword",
     "application/pdf",
+    "application/vnd.ms-cab-compressed",
     "application/vnd.ms-excel",
+    "application/vnd.ms-htmlhelp",
     "application/vnd.ms-office",
+    "application/vnd.ms-outlook",
     "application/vnd.ms-powerpoint",
+    "application/vnd.ms-tnef",
     "application/vnd.oasis.opendocument.presentation",
     "application/vnd.oasis.opendocument.spreadsheet",
     "application/vnd.oasis.opendocument.text",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "application/x-ms-shortcut",
-    "application/vnd.ms-htmlhelp",
+    "application/x-7z-compressed",
+    "application/x-bzip2",
     "application/x-dosexec",
+    "application/x-executable",
     "application/x-hwp",
     "application/x-iso9660-image",
     "application/x-java-applet",
+    "application/x-lzh-compressed",
     "application/x-mach-binary",
+    "application/x-ms-shortcut",
+    "application/x-ms-wim",
+    "application/x-msi",
+    "application/x-mswinurl",
+    "application/x-rar",
     "application/x-shockwave-flash",
     "application/x-sylk",
-    "application/x-bzip2",
+    "application/x-tar",
+    "application/x-xar",
+    "application/x-xz",
     "image/svg+xml",
     "message/rfc822",
     "text/csv",
     "text/html",
     "text/rtf",
-    "text/x-shellscript",
-    "application/x-7z-compressed",
-    "application/gzip",
-    "application/x-tar",
-    "application/vnd.ms-tnef",
-    "application/x-mswinurl",
     "text/x-msdos-batch",
+    "text/x-shellscript",
     "text/xml",
-    "application/x-executable",
-    "video/quicktime",
-    "application/x-rar",
-    "application/vnd.ms-cab-compressed",
-    "application/x-lzh-compressed",
-    "application/vnd.ms-outlook",
-    "application/x-msi",
-    "application/x-xz",
-    "application/x-ms-wim"
+    "video/quicktime"
 };
 
 static const char *text_plain_types[] = {
@@ -74,6 +75,30 @@ static const char *text_plain_extensions[] = {
     ".ps1",
     ".vbs",
     ".iqy"};
+
+/*
+bat
+cmd
+csv
+hta
+htm
+html
+iqy
+js
+jse
+mht
+mhtml
+ps1
+slk
+svg
+url
+vbe
+vbs
+wsf
+xht
+xhtml
+xls
+*/
 
 void log_it(const char *format, ...) {
     if ( !logging ) {
@@ -158,17 +183,6 @@ const char *get_magic(const char *database, const char *filename, int flags)
     // magic_close(cookie);
     return magic_file(mime_cookie, filename);
 }
-/*
-const char *get_mime(const char * database, const char *filename)
-{
-    return get_magic(database, filename, MAGIC_MIME_TYPE);
-}
-
-const char *get_type(const char * database, const char *filename)
-{
-    return get_magic(database, filename, 0);
-}
-*/
 
 int is_supported(const char * database, const char *filename)
 {
