@@ -1,12 +1,13 @@
 # Periculosum
-Determine potential dangerous files
-by Mikhail Kondrashin
+Determine whenever file is supported by Trend Micro Sanbox solution (c) 2022 by Mikhail Kondrashin
 
 [![License](https://img.shields.io/badge/License-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This utility by no means detects whenever particular file is dangerous or not, but provides ability to prefilter files before more sofisticated inspection like sandbox analysis or multiscanners.
 
 Its heavely dependent on [libmagic](http://www.darwinsys.com/file/) library.
+
+Program is base on list of supported file foramts by [Trend Micro Deep Discovery Analyzer](https://success.trendmicro.com/dcx/s/solution/1122240-supported-sandbox-and-u-sandbox-file-types?language=en_US).
 
 ## Build
 
