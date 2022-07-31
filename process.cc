@@ -59,7 +59,14 @@ static const char *mime_types[] = {
     "text/x-msdos-batch",
     "text/x-shellscript",
     "text/xml",
-    "video/quicktime"
+    "video/quicktime",
+    "application/x-arj",
+    "application/x-ace-compressed",
+    "application/mac-binhex40",
+    "application/x-chrome-extension",
+    "application/x-arc",
+    "application/vnd.symbian.install",
+    "application/x-stuffit"
 };
 
 static const char *text_plain_types[] = {
@@ -74,7 +81,8 @@ static const char *text_plain_extensions[] = {
     ".js",
     ".ps1",
     ".vbs",
-    ".iqy"};
+    ".iqy",
+    ".vbe"};
 
 /*
 bat
