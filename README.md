@@ -7,7 +7,7 @@ This utility by no means detects whenever particular file is dangerous or not, b
 
 Its heavely dependent on [libmagic](http://www.darwinsys.com/file/) library.
 
-Program is base on list of supported file foramts by [Trend Micro Deep Discovery Analyzer](https://success.trendmicro.com/dcx/s/solution/1122240-supported-sandbox-and-u-sandbox-file-types?language=en_US).
+Program is base on list of supported file formats by [Trend Micro Deep Discovery Analyzer](https://success.trendmicro.com/dcx/s/solution/1122240-supported-sandbox-and-u-sandbox-file-types?language=en_US).
 
 ## Build
 
