@@ -5,21 +5,24 @@ SHELL = bash
 MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk \
 	archive     commands    filesystems macintosh   msooxml     rtf         uuencode \
 	audio       compress    flash       mail.news   os2         sgml        windows
-	
+
 .PHONY: clean test
 
 all: periculosum checker
 
 #magic.mgc
 
-periculosum: periculosum.cc process.o mgc.cc
-	${CC} $^   -L build/target/lib -l magic -o $@
+periculosum: periculosum.cc process.o mgc.o
+	${CC} $^ -L build/target/lib -l magic -o $@
 
 checker: checker.cc process.o mgc.o
-	${CC} $^  -L build/target/lib -l magic -o $@
+	${CC} $^ -L build/target/lib -l magic -o $@
 
 process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
+
+mgc.o: mgc.cc
+	${CC} -c mgc.cc	
 
 mgc.cc: magic.mgc
 	xxd -i magic.mgc > mgc.cc
