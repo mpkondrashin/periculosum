@@ -18,7 +18,7 @@ checker: checker.cc process.o mgc.cc
 process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
 
-mgc.h: magic.mgc
+mgc.cc: magic.mgc
 	xxd -i magic.mgc > mgc.cc
 
 magic.mgc: build/target/bin/file
