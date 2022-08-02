@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
+#include <cstring>
 
 #include "process.h"
 #include "magicclass.h"
