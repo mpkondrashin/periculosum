@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include "build/target/include/magic.h"
+#include "magicclass.h"
 
 int logging = 0;
 const char *last_error_message = NULL;
@@ -74,39 +74,41 @@ static const char *text_plain_types[] = {
 };
 
 static const char *octet_stream_extensions[] = {
-    ".com" // min/max size
+    "com" // min/max size
 };
 
-static const char *text_plain_extensions[] = {
-    ".js",
-    ".ps1",
-    ".vbs",
-    ".iqy",
-    ".vbe"};
-
 /*
-bat
-cmd
-csv
-hta
-htm
-html
-iqy
-js
-jse
-mht
-mhtml
-ps1
-slk
-svg
-url
-vbe
-vbs
-wsf
-xht
-xhtml
-xls
+static const char *text_plain_extensions[] = {
+    "js",
+    "ps1",
+    "vbs",
+    "iqy",
+    "vbe"};
 */
+
+static const char *extensions[] = {
+    "bat",
+    "cmd",
+    "csv",
+    "hta",
+    "htm",
+    "html",
+    "iqy",
+    "js",
+    "jse",
+    "mht",
+    "mhtml",
+    "ps1",
+    "slk",
+    "svg",
+    "url",
+    "vbe",
+    "vbs",
+    "wsf",
+    "xht",
+    "xhtml",
+    "xls"
+};
 
 void log_it(const char *format, ...) {
     if ( !logging ) {
@@ -153,7 +155,7 @@ int check_extension(const char *list[], int len, const char *filename)
         {
             return 0;
         }
-        if (!strcasecmp(dot, list[i]))
+        if (!strcasecmp(dot+1, list[i]))
         {
             log_it("Matched file extension: %s", filename);
             return 1;
@@ -167,13 +169,14 @@ int check_octet_stream_extensions(const char *filename)
     const int len = sizeof(octet_stream_extensions) / sizeof(octet_stream_extensions[0]);
     return check_extension(octet_stream_extensions, len, filename);
 }
-
+/*
 int check_text_plain_extensions(const char *filename)
 {
     const int len = sizeof(text_plain_extensions) / sizeof(text_plain_extensions[0]);
     return check_extension(text_plain_extensions, len, filename);
 }
-
+*/
+/*
 const char *get_magic(const char *database, const char *filename, int flags)
 {
     magic_t mime_cookie = magic_open(flags);
@@ -191,14 +194,17 @@ const char *get_magic(const char *database, const char *filename, int flags)
     // magic_close(cookie);
     return magic_file(mime_cookie, filename);
 }
+*/
 
-int is_supported(const char * database, const char *filename)
+int is_supported(const char *filename, Magic *magicMime, Magic *magicType)
 {
     log_it("File name: %s", filename);
-    const char *mime = get_magic(database, filename, MAGIC_MIME_TYPE);
-    if (mime == NULL) {
-        return ERROR_OCCURED;
+    const int len = sizeof(extensions) / sizeof(extensions[0]);
+    int rc = check_extension(extensions, len, filename);
+    if (rc) {
+            return 1;
     }
+    const char *mime = magicMime->Detect(filename);
     log_it("MIME type: %s", mime);
     if (check_mime_type(mime))
     {
@@ -216,13 +222,10 @@ int is_supported(const char * database, const char *filename)
     }
     if (!strcmp(mime, "text/plain"))
     {
-        if (check_text_plain_extensions(filename) ) {
-            return 1;
-        }
-        const char *type  = get_magic(database, filename, 0);
-        if (mime == NULL) {
-            return ERROR_OCCURED;
-        }
+        //if (check_text_plain_extensions(filename) ) {
+       //     return 1;
+        //}
+        const char *type  = magicType->Detect(filename);
         return check_text_plain_types(type);
     }
     return 0;

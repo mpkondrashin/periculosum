@@ -8,10 +8,12 @@
 const char *DEFAULT_MAGIC_DATABASE =  "magic.mgc";
 const char *magic_database = DEFAULT_MAGIC_DATABASE;
 
-const char *filename = NULL;
+#ifndef PATH_MAX
+#define PATH_MAX        4096 
+#endif
 
 void usage() {
-    fprintf(stderr, "Usage: supported [-m filename] [-l] [-h] filename\n");
+    fprintf(stderr, "Usage: checker [-m filename] [-l] [-h]\n");
     exit(2);
 }
 
@@ -35,8 +37,6 @@ void parse_args(int argc, char **argv) {
                 "-m filename\tprovide alternative magic file\n"
                 "-l\t\tlog operations to stderr\n"
                 "Exit codes:\n"
-                "0 - file can not be a threat\n"
-                "1 - file can be a threat and should be checked to some other tool\n"
                 "2 - wrong options\n"
                 "100 - error occured\n"
                 );
@@ -44,20 +44,30 @@ void parse_args(int argc, char **argv) {
                 break;
         }
     }
-    if (optind != argc-1) {
+    if (optind != argc) {
         usage();
     }
-    filename = argv[optind];
 }
 
 int main(int argc, char **argv)
 {
     parse_args(argc, argv);
-    Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
-    Magic *magicType = new Magic(magic_database);
-    int rc = is_supported(filename, magicMime, magicType);
-    if (rc == ERROR_OCCURED) {
-        fprintf(stderr, "%s\n", last_error());
+    try {
+        Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
+        Magic *magicType = new Magic(magic_database);
+        for(;;) {
+            char filename[PATH_MAX];
+            if (!fgets(filename,  PATH_MAX, stdin) ) {
+                return 100;
+            }
+            filename[strcspn(filename, "\r\n")] = '\0'; 
+            int rc = is_supported(filename, magicMime, magicType);
+            printf("%d\n", rc);
+            fflush(stdout);
+        }
+    } catch (std::exception &e) {
+        fprintf(stderr, "%s\n", e.what());
+        return 100;
     }
-    return rc;
+
 }
