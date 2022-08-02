@@ -9,17 +9,17 @@ all: periculosum checker
 
 #magic.mgc
 
-periculosum: periculosum.cc process.o mgc.h
-	${CC} periculosum.cc process.o   -L build/target/lib -l magic -o $@
+periculosum: periculosum.cc process.o mgc.cc
+	${CC} $^   -L build/target/lib -l magic -o $@
 
-checker: checker.cc process.o 
+checker: checker.cc process.o mgc.cc
 	${CC} $^  -L build/target/lib -l magic -o $@
 
 process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
 
 mgc.h: magic.mgc
-	xxd -i magic.mgc > mgc.h
+	xxd -i magic.mgc > mgc.cc
 
 magic.mgc: build/target/bin/file
 	mkdir -p magic

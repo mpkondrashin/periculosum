@@ -66,7 +66,8 @@ static const char *mime_types[] = {
     "application/x-chrome-extension",
     "application/x-arc",
     "application/vnd.symbian.install",
-    "application/x-stuffit"
+    "application/x-stuffit",
+    "application/zip"
 };
 
 static const char *text_plain_types[] = {

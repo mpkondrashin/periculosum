@@ -6,8 +6,9 @@
 
 #include "build/target/include/magic.h"
 
-//extern unsigned char magic_mgc[];
-#include "mgc.h"
+extern unsigned char magic_mgc[];
+extern unsigned int magic_mgc_len;
+//#include "mgc.h"
 
 class MagicError : public std::exception {
 
@@ -50,7 +51,7 @@ public:
         if (cookie == NULL) {
             throw MagicInitError();
         }
-        size_t size = sizeof(magic_mgc);
+        size_t size = magic_mgc_len;
         void * a[1] = {magic_mgc};
         if (magic_load_buffers(cookie, a, &size, 1) != 0) {
             magic_close(cookie);
