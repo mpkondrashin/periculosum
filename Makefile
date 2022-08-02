@@ -1,4 +1,5 @@
-CC=llvm-g++
+#CC=llvm-g++
+CC=g++
 SHELL = bash
 
 #MGC=magic/animation magic/cafebabe magic/flash magic/msdos magic/pdf magic/sylk magic/archive magic/filesystems magic/mach magic/os2 magic/sgml

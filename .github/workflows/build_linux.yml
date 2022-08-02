@@ -1,6 +1,6 @@
 on: [push]
 jobs:
-  Build-Release:
+  Build-Linux-Release:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
