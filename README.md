@@ -1,5 +1,5 @@
 # Periculosum
-Determine whenever file is supported by Trend Micro Sanbox solution (c) 2022 by Mikhail Kondrashin
+Determine whenever file is supported by Trend Micro Sanbox solution 
 
 [![License](https://img.shields.io/badge/License-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -19,14 +19,14 @@ cd periculosum
 make
 ```
 
-This will generate **periculosum** and **magic.mgc** files.
+This will generate **periculosum**, **checker**, and **magic.mgc** files.
 
 To run tests:
 ```code
 make test
 ```
 
-## Usage
+## Periculosum Usage
 ```code
 periculosum filename
 ```
@@ -45,3 +45,17 @@ Command line options:
 
 **Disclamer: if periculosum returns 0 exit code, meaning that it assuments that file is harmless,
 it is by no meanes guarantined.** 
+
+
+## Checker Usage
+```code
+checker
+```
+
+Input file path from commandline and cheker will output 1 or 0 indication whenever this file
+should or should not be submitted for testing by Sandbox.
+
+Command line options:
+- **-h** - show help and exit
+- **-l** — log to stderr check operations
+- **-m filename** — provide alternate magic.mgc file (default is the one in same directory as periculosum executable)
