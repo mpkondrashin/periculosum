@@ -3,8 +3,8 @@
 FILE=build/target/bin/file
 MAGIC_MGC=build/target/share/misc/magic.mgc
 
-${FILE} -C -m magic
-ls -lh magic.mgc
+#${FILE} -C -m magic
+#ls -lh magic.mgc
 
 echo "Check malicious"
 for f in testdata/malicious/*
