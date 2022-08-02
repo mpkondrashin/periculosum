@@ -29,6 +29,7 @@ if [ "${GOOS}" = "darwin" ]; then
     which automake || brew automake
     which libtool || brew libtool
 elif [ "${GOOS}" = "linux" ]; then
+    echo "Skip install build tools for linux"
 #    apt-get install \
 #            automake \
 #            gcc \
