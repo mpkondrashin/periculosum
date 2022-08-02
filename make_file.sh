@@ -29,13 +29,13 @@ if [ "${GOOS}" = "darwin" ]; then
     which automake || brew automake
     which libtool || brew libtool
 elif [ "${GOOS}" = "linux" ]; then
-    apt-get install \
-            automake \
-            gcc \
-            libtool \
-            make \
-            python \
-            zlib1g-dev
+#    apt-get install \
+#            automake \
+#            gcc \
+#            libtool \
+#            make \
+#            python \
+#            zlib1g-dev
 fi
 
 BASE=$(pwd)
