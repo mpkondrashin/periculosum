@@ -53,8 +53,10 @@ void parse_args(int argc, char **argv) {
 int main(int argc, char **argv)
 {
     parse_args(argc, argv);
-    Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
-    Magic *magicType = new Magic(magic_database);
+    Magic *magicMime = new Magic(MAGIC_MIME_TYPE);
+    Magic *magicType = new Magic();
+  //  Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
+//    Magic *magicType = new Magic(magic_database);
     int rc = is_supported(filename, magicMime, magicType);
     if (rc == ERROR_OCCURED) {
         fprintf(stderr, "%s\n", last_error());

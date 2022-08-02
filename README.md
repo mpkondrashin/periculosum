@@ -52,8 +52,8 @@ it is by no meanes guarantined.**
 checker
 ```
 
-Input file path from commandline and cheker will output 1 or 0 indication whenever this file
-should or should not be submitted for testing by Sandbox.
+Input file path from command line and cheker will output 1 or 0 indication whenever this file
+should or should not be submitted for testing to Sandbox.
 
 Command line options:
 - **-h** - show help and exit
