@@ -10,30 +10,43 @@
 extern unsigned char magic_mgc[];
 extern unsigned int magic_mgc_len;
 
-class MagicError : public std::exception {
+class MagicException: public std::exception
+{
+public:
+    explicit MagicException(const char* message)
+        : msg_(message) {}
 
+    explicit MagicException(const std::string& message)
+        : msg_(message) {}
+
+    const char* what() const noexcept override {
+       return msg_.c_str();
+    }
+protected:
+    std::string msg_;
+};
+/*
+class MagicError : public std::exception {
 };
 
 class MagicInitError : public MagicError {
-    virtual const char* what() const throw()
+    virtual const char* what() const noexcept
     {
         return "Magic library init error";
     }
 };
 
 class MagicLoadError : public MagicError {
-    const char *message;
+    std::string message;
 public:
-    MagicLoadError(const char* _message): message(strdup(_message)) {}
-    ~MagicLoadError(){
-        delete message;
-    }
-    virtual const char* what() const throw()
+    MagicLoadError(const char* _message): message(_message) {}
+    virtual const char* what() const noexcept
     {
-        return message;
+        return message.c_str();
     }
 };
 
+*/
 
 class Magic {
     magic_t cookie;
