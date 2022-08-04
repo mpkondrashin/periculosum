@@ -3,12 +3,12 @@
 
 #include <string>
 #include <exception>
+#include <strings.h>
 
 #include "build/target/include/magic.h"
 
 extern unsigned char magic_mgc[];
 extern unsigned int magic_mgc_len;
-//#include "mgc.h"
 
 class MagicError : public std::exception {
 
@@ -24,7 +24,10 @@ class MagicInitError : public MagicError {
 class MagicLoadError : public MagicError {
     const char *message;
 public:
-    MagicLoadError(const char* _message): message(_message) {}
+    MagicLoadError(const char* _message): message(strdup(_message)) {}
+    ~MagicLoadError(){
+        delete message;
+    }
     virtual const char* what() const throw()
     {
         return message;
@@ -36,28 +39,8 @@ class Magic {
     magic_t cookie;
     int flags; 
 public:
-    Magic(const char *_database, int _flags = 0) :flags(_flags) {
-        cookie = magic_open(flags);
-        if (cookie == NULL) {
-            throw MagicInitError();
-        }
-        if (magic_load(cookie, _database) != 0) {
-            magic_close(cookie);
-            throw MagicLoadError(magic_error(cookie));
-        }
-    }
-    Magic(int _flags = 0) :flags(_flags) {
-        cookie = magic_open(flags);
-        if (cookie == NULL) {
-            throw MagicInitError();
-        }
-        size_t size = magic_mgc_len;
-        void * a[1] = {magic_mgc};
-        if (magic_load_buffers(cookie, a, &size, 1) != 0) {
-            magic_close(cookie);
-            throw MagicLoadError(magic_error(cookie));
-        }
-    }
+    Magic(const char *_database, int _flags = 0);
+    Magic(int _flags = 0);
     ~Magic() {
         magic_close(cookie);
     }
