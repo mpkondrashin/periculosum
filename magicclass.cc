@@ -19,7 +19,8 @@ Magic::Magic(int _flags) :flags(_flags) {
     size_t size = magic_mgc_len;
     void * a[1] = {magic_mgc};
     if (magic_load_buffers(cookie, a, &size, 1) != 0) {
+        MagicException exc(magic_error(cookie));
         magic_close(cookie);
-        throw MagicException(magic_error(cookie));
+        throw exc;
     }
 }
