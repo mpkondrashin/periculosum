@@ -43,7 +43,7 @@ BASE=$(pwd)
 #TARGET="magic_${GOOS}_${GOARCH}"
 TEMP="build"
 PREFIX=${TEMP}/target
-
+echo "PREFIX=${PREFIX}"
 (
     mkdir -p ${TEMP}
     cd ${TEMP}
@@ -51,7 +51,7 @@ PREFIX=${TEMP}/target
     cd file
 
     autoreconf -f -i
-    ./configure --prefix=${BASE}/${PREFIX}  --disable-silent-rules
+    ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules
     make -j4
     make -C tests check
     make install
