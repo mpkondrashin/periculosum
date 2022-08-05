@@ -13,12 +13,13 @@ all: periculosum checker
 
 #magic.mgc
 
+LIBS=build/target/lib/libmagic.a -l bz2 -l lzma -l z
+
 periculosum: periculosum.cc process.o mgc.o magicclass.o
-	${CC} $^ -static -L build/target/lib -l magic -o $@
-#	${CC} $^ -static build/target/lib/libmagic.so  -o $@
+	${CC} $^  $(LIBS) -o $@
+
 checker: checker.cc process.o mgc.o magicclass.o
-#	${CC} $^ -static build/target/lib/libmagic.so -o $@
-	${CC} $^ -static -L build/target/lib -l magic -o $@
+	${CC} $^ $(LIBS) -o $@
 
 process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
