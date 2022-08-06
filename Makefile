@@ -13,13 +13,16 @@ all: periculosum checker
 
 #magic.mgc
 
-LIBS=build/target/lib/libmagic.a -l bz2 -l lzma -l z
+LIBS=build/target/lib/libmagic.a \
+	build/bzip2.target/lib/libbz2_static.a \
+	build/lzma.target/lib/liblzma.a \
+	build/zlib.target/lib/libz.a
 
-periculosum: periculosum.cc process.o mgc.o magicclass.o
-	${CC} $^  $(LIBS) -o $@
+periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
+	${CC} $^ -o $@
 
-checker: checker.cc process.o mgc.o magicclass.o
-	${CC} $^ $(LIBS) -o $@
+checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
+	${CC} $^ -o $@
 
 process.o: process.cc process.h build/target/include/magic.h
 	${CC} -c process.cc
@@ -40,11 +43,20 @@ magic.mgc: build/target/bin/file
 	done
 	build/target/bin/file -C -m magic
 
-build/target/bin/file build/target/include/magic.h:
-	./make_file.sh
-
 test: periculosum $(wildcard magic/*)
 	./check.sh
+
+build/zlib.target/lib/libz.a:
+	./make_zlib.sh
+
+build/bzip2.target/lib/libbz2_static.a:
+	./make_bzip2.sh
+
+build/lzma.target/lib/liblzma.a:
+	./make_lzma.sh
+
+build/target/lib/libmagic.a:
+	./make_file.sh
 
 clean:
 	rm -rf build
