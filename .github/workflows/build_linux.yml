@@ -9,3 +9,10 @@ jobs:
         run: make; ls -l
       - name: Test
         run: make test
+      - name: Pack release
+        run: tar cfvz periculosum_linux64.tgz periculosum checker LICENSE README.md
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: cia_linux64.tgz

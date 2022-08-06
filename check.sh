@@ -1,10 +1,22 @@
 #!/bin/bash
 
-FILE=build/target/bin/file
-MAGIC_MGC=build/target/share/misc/magic.mgc
+#
+# Copyright (C) 2022 Michael Kondrashin — All Rights Reserved
+# You may use, distribute and modify this code under the
+# terms of the MIT license.
+# You should have received a copy of the MIT license with
+# this file. If not, please write to: mkondrashin@gmail.com
+#
+# Lates version of this file can be found at following URL:
+# https://github.com/mpkondrashin/periculosum
+#
+# check.sh - run tests
+#
 
-#${FILE} -C -m magic
-#ls -lh magic.mgc
+set -e
+
+FILE=build/target/bin/file
+MAGIC_MGC=build/magic.target/share/misc/magic.mgc
 
 echo "Check malicious"
 for f in testdata/malicious/*

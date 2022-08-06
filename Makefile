@@ -1,8 +1,21 @@
-#CC=llvm-g++ -std=c++11
+
+#
+# Copyright (C) 2022 Michael Kondrashin — All Rights Reserved
+# You may use, distribute and modify this code under the
+# terms of the MIT license.
+# You should have received a copy of the MIT license with
+# this file. If not, please write to: mkondrashin@gmail.com
+#
+# Lates version of this file can be found at following URL:
+# https://github.com/mpkondrashin/periculosum
+#
+# Makefile - build periculosum and checker programs
+# Available options: all, test, clean
+#
+
 CC=g++ -std=c++11
 SHELL = bash
 
-#MGC=magic/animation magic/cafebabe magic/flash magic/msdos magic/pdf magic/sylk magic/archive magic/filesystems magic/mach magic/os2 magic/sgml
 MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk \
 	archive     commands    filesystems macintosh   msooxml     rtf         uuencode \
 	audio       compress    flash       mail.news   os2         sgml        windows
@@ -10,8 +23,6 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 .PHONY: clean test
 
 all: periculosum checker
-
-#magic.mgc
 
 LIBS=build/target/lib/libmagic.a \
 	build/bzip2.target/lib/libbz2_static.a \

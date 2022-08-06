@@ -7,7 +7,10 @@
 # You should have received a copy of the MIT license with
 # this file. If not, please write to: mkondrashin@gmail.com
 #
-# make_bzip2.sh - download nad build static version on bzip2 library.
+# Lates version of this file can be found at following URL:
+# https://github.com/mpkondrashin/periculosum
+#
+# make_bzip2.sh - download and build static version on bzip2 library.
 # This script should result libbz2_static.a file in
 # build/bzip2.target/lib folder
 #
