@@ -8,6 +8,7 @@ apt-get install -y \
     g++ \
     libtool \
     make \
-    zlib1g-dev
+    zlib1g-dev \
+    cmake
 
 #     python ?
