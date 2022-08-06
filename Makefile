@@ -70,6 +70,6 @@ build/target/include/magic.h build/target/lib/libmagic.a:
 	./make_file.sh
 
 clean:
-	rm -rf build
-	rm periculosum
+	rm -rf build magic
+	rm periculosum checker
 	rm magic.mgc
