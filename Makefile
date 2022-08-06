@@ -66,8 +66,8 @@ build/bzip2.target/lib/libbz2_static.a:
 build/lzma.target/lib/liblzma.a:
 	./make_lzma.sh
 
-build/target/include/magic.h build/target/lib/libmagic.a:
-	./make_file.sh
+build/magic.target/include/magic.h magic.build/target/lib/libmagic.a:
+	./make_magic.sh
 
 clean:
 	rm -rf build magic
