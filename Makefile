@@ -24,7 +24,7 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 
 all: periculosum checker
 
-LIBS=build/target/lib/libmagic.a \
+LIBS=build/magic.target/lib/libmagic.a \
 	build/bzip2.target/lib/libbz2_static.a \
 	build/lzma.target/lib/liblzma.a \
 	build/zlib.target/lib/libz.a
