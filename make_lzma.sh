@@ -4,7 +4,7 @@ set -e
 
 cd build
 BUILD=$(pwd)
-#git clone https://github.com/kobolabs/liblzma.git
+git clone https://github.com/kobolabs/liblzma.git
 
 cd liblzma
 

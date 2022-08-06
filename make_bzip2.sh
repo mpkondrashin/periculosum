@@ -4,7 +4,7 @@ set -e
 
 cd build
 BUILD=$(pwd)
-#git clone https://github.com/libarchive/bzip2.git
+git clone https://github.com/libarchive/bzip2.git
 
 mkdir -p bzip2.build
 cd bzip2.build
