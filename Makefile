@@ -35,7 +35,7 @@ periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
 checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
 	${CC} $^ -o $@
 
-process.o: process.cc process.h build/target/include/magic.h
+process.o: process.cc process.h magic.build/target/include/magic.h
 	${CC} -c process.cc
 
 mgc.o: mgc.cc
