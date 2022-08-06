@@ -47,12 +47,12 @@ magicclass.o: magicclass.cc magicclass.h
 mgc.cc: magic.mgc
 	xxd -i magic.mgc > mgc.cc
 
-magic.mgc: build/target/bin/file
+magic.mgc: build/magic.target/bin/file
 	mkdir -p magic
 	for f in $(MGC); do \
 		cp build/file/magic/Magdir/$$f magic; \
 	done
-	build/target/bin/file -C -m magic
+	build/magic.target/bin/file -C -m magic
 
 test: periculosum $(wildcard magic/*)
 	./check.sh
@@ -66,7 +66,7 @@ build/bzip2.target/lib/libbz2_static.a:
 build/lzma.target/lib/liblzma.a:
 	./make_lzma.sh
 
-magic.build/target/include/magic.h magic.build/target/lib/libmagic.a:
+build/magic.target/include/magic.h build/magic.target/lib/libmagic.a:
 	./make_magic.sh
 
 clean:

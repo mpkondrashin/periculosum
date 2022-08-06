@@ -19,8 +19,18 @@ set -e
 
 cd build
 BUILD=$(pwd)
-git clone https://github.com/madler/zlib.git
-cd zlib
+
+
+if [ -d zlib/.git ]
+then
+    cd zlib
+    git pull
+else
+    git clone https://github.com/madler/zlib.git
+    cd zlib
+fi
+
+
 
 ./configure --prefix=$BUILD/zlib.target --static
 make

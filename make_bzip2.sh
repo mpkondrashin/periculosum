@@ -19,7 +19,15 @@ set -e
 
 cd build
 BUILD=$(pwd)
-git clone https://github.com/libarchive/bzip2.git
+
+if [ -d bzip2/.git ]
+then
+    cd bzip2
+    git pull
+    cd ..
+else
+    git clone https://github.com/libarchive/bzip2.git
+fi
 
 mkdir -p bzip2.build
 cd bzip2.build
