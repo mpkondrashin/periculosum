@@ -15,4 +15,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: cia_linux64.tgz
+          files: periculosum_linux64.tgz
