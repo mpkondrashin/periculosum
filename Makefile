@@ -55,7 +55,7 @@ build/bzip2.target/lib/libbz2_static.a:
 build/lzma.target/lib/liblzma.a:
 	./make_lzma.sh
 
-build/target/lib/libmagic.a:
+build/target/include/magic.h build/target/lib/libmagic.a:
 	./make_file.sh
 
 clean:
