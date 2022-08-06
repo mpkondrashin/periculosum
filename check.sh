@@ -13,18 +13,19 @@
 # check.sh - run tests
 #
 
-set -e
+FILE=build/magic.target/bin/file
+[ -f ${FILE} ] || exec echo "${FILE} is missing"
 
-FILE=build/target/bin/file
 MAGIC_MGC=build/magic.target/share/misc/magic.mgc
+[ -f ${MAGIC_MGC} ] || exec echo "${MAGIC_MGC} is missing"
 
 echo "Check malicious"
 for f in testdata/malicious/*
 do
-    ./periculosum -l ${f} > output.txt
+    OUTPUT=$(./periculosum -l ${f})
     if [ "$?" != "1" ]
     then
-        cat output.txt
+        echo ${OUTPUT}
         echo =====
         echo ${f}
         ${FILE} -m ${MAGIC_MGC} --brief ${f}
@@ -36,10 +37,10 @@ done
 echo "Check innocent"
 for f in testdata/innocent/*
 do
-    ./periculosum -l ${f} > output.txt
+    OUTPUT=$(./periculosum -l ${f})
     if [ "$?" != "0" ]
     then
-        cat output.txt
+        echo ${OUTPUT}
         echo =====
         echo ${f}
         ${FILE} -m ${MAGIC_MGC} --brief ${f}
