@@ -18,7 +18,7 @@
 #include <exception>
 #include <strings.h>
 
-#include "build/target/include/magic.h"
+#include "build/magic.target/include/magic.h"
 
 extern unsigned char magic_mgc[];
 extern unsigned int magic_mgc_len;
