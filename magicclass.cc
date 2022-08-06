@@ -1,3 +1,16 @@
+/*
+ Copyright (C) 2022 Michael Kondrashin — All Rights Reserved
+ You may use, distribute and modify this code under the
+ terms of the MIT license.
+ You should have received a copy of the MIT license with
+ this file. If not, please write to: mkondrashin@gmail.com
+
+ Lates version of this file can be found at following URL:
+ https://github.com/mpkondrashin/periculosum
+
+ magicclass.cc - class Magic implementation
+*/
+
 #include "magicclass.h"
 
 Magic::Magic(const char *_database, int _flags) :flags(_flags) {
