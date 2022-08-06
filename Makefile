@@ -72,3 +72,4 @@ build/target/include/magic.h build/target/lib/libmagic.a:
 clean:
 	rm -rf build magic
 	rm -f periculosum checker magic.mgc
+	rm -f *.o
