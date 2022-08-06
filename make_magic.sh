@@ -24,8 +24,14 @@ PREFIX=${TEMP}/magic.target
 mkdir -p ${TEMP}
 cd ${TEMP}
 
-git clone https://github.com/file/file.git
-cd file
+if [ -d file/.git ]
+then
+    cd file
+    git pull
+else
+    git clone https://github.com/file/file.git
+    cd file
+fi
 
 autoreconf -f -i
 ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules
