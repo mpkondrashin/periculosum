@@ -20,29 +20,29 @@
 #include "process.h"
 #include "magicclass.h"
 
-const char *DEFAULT_MAGIC_DATABASE =  "magic.mgc";
-const char *magic_database = DEFAULT_MAGIC_DATABASE;
+//const char *DEFAULT_MAGIC_DATABASE =  "magic.mgc";
+//const char *magic_database = DEFAULT_MAGIC_DATABASE;
 
 #ifndef PATH_MAX
 #define PATH_MAX        4096 
 #endif
 
 void usage() {
-    fprintf(stderr, "Usage: checker [-m filename] [-l] [-h]\n");
+    fprintf(stderr, "Usage: checker [-l] [-h]\n");
     exit(2);
 }
 
 void parse_args(int argc, char **argv) {
     int option;
-    while( (option = getopt(argc, argv, "m:lh")) != -1 ) {
+    while( (option = getopt(argc, argv, "lh")) != -1 ) {
         switch( option ) {
-            case 'm':
+/*            case 'm':
                 if (magic_database != DEFAULT_MAGIC_DATABASE) {
                     fprintf(stderr, "Only one magic databse file is supported\n");
                     usage();
                 }
                 magic_database = optarg;
-                break;
+                break;*/
             case 'l':
                 logging = 1;
                 break;
@@ -68,8 +68,10 @@ int main(int argc, char **argv)
 {
     parse_args(argc, argv);
     try {
-        Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
-        Magic *magicType = new Magic(magic_database);
+        Magic *magicMime = new Magic(MAGIC_MIME_TYPE);
+        Magic *magicType = new Magic();
+//        Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
+  //      Magic *magicType = new Magic(magic_database);
         for(;;) {
             char filename[PATH_MAX];
             if (!fgets(filename,  PATH_MAX, stdin) ) {
