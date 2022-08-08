@@ -7,8 +7,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Build
         run: make; ls -l
-      - name: Test
+      - name: Test Periculosum
         run: make test
+      - name: Setup Go
+        uses: actions/setup-go@v2
+      - name: Check Go version
+        run: go version
+      - name: Test Checker
+        run: cd goperic; go test -v
       - name: Pack release
         run: tar cfvz periculosum_linux64.tgz periculosum checker LICENSE README.md
       - name: Release

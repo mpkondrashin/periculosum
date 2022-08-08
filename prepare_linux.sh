@@ -10,7 +10,7 @@
 # Lates version of this file can be found at following URL:
 # https://github.com/mpkondrashin/periculosum
 #
-# prepare_linux.sh - install all required to build for darwin
+# prepare_linux.sh - install all required to build for linux
 #
 
 set -e
