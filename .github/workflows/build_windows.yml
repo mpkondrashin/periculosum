@@ -7,9 +7,8 @@ jobs:
     name: Build & Test & Pack
     runs-on: windows-latest
     steps:
-    # every step must define a `uses` or `run` key
-      - run: git config --global core.autocrlf input
-        name: Config Git
+#      - run: git config --global core.autocrlf input
+#        name: Config Git
       - uses: actions/checkout@v3
         name: Check out repository code
       - uses: cygwin/cygwin-install-action@master
