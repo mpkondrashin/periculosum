@@ -1,4 +1,4 @@
-make: Build for Windows
+name: Build for Windows
 on:
   push:
     branches: [ main ]
