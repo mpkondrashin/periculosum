@@ -26,6 +26,8 @@ PREFIX=${TEMP}/magic.target
 mkdir -p ${TEMP}
 cd ${TEMP}
 
+git config --global core.autocrlf input
+
 if [ -d file/.git ]
 then
     cd file
