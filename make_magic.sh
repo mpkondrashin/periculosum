@@ -25,7 +25,12 @@ PREFIX=${TEMP}/magic.target
 
 mkdir -p ${TEMP}
 cd ${TEMP}
-
+echo "ENV"
+env
+echo PWD
+pwd
+echo LS
+ls
 git config --global core.autocrlf input
 
 if [ -d file/.git ]
