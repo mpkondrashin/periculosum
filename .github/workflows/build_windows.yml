@@ -2,8 +2,22 @@ on: [push]
 jobs:
   Build-Windows-Release:
     runs-on: windows-latest
+    strategy:
+      matrix:
+         include:
+           - platform: 'x86_64'
+             packages: >-
+              base
+              make
+              autoreconf
+              libtool
+              autoconf
+              automake
+              gcc-g++
+              zip
+      fail-fast: false
     steps:
-      - name: Config git
+      - name: Config Git
       - run: git config --global core.autocrlf input
       - name: Check out repository code
       - uses: actions/checkout@v3
