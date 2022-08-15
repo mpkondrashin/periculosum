@@ -1,3 +1,4 @@
+name: Build for Linux
 on: [push]
 jobs:
   Build-Linux-Release:

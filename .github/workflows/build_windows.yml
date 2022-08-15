@@ -1,11 +1,13 @@
 name: Build for Windows
-on:
-  push:
-    branches: [ main ]
+on: [push]
+#on:
+#  push:
+#    branches: [ main ]
 jobs:
   Build-Windows-Release:
     name: Build & Test & Pack
-    runs-on: windows-latest
+    runs-on: windows-2019
+# windows-latest
     steps:
       - run: git config --global core.autocrlf input
         name: Config Git
