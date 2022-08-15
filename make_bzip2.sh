@@ -15,7 +15,7 @@
 # build/bzip2.target/lib folder
 #
 
-set -eu
+set -euo pipefail
 export PS4='> '
 set -x
 
