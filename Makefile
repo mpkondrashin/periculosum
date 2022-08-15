@@ -15,7 +15,7 @@
 
 ifdef OS
     LIBS=build/magic.target/lib/libmagic.a
-	FIX_ASLR=cat fix_aslt.ps1 | powershell.exe -Command -
+	FIX_ASLR=cat fix_aslr.ps1 | powershell.exe -Command -
 else
 	LIBS=build/magic.target/lib/libmagic.a \
 		build/bzip2.target/lib/libbz2_static.a \
