@@ -13,6 +13,17 @@
 # Available options: all, test, clean
 #
 
+ifdef OS
+    LIBS=build/magic.target/lib/libmagic.a
+	LDFLAGS=
+else
+	LIBS=build/magic.target/lib/libmagic.a \
+		build/bzip2.target/lib/libbz2_static.a \
+		build/lzma.target/lib/liblzma.a \
+		build/zlib.target/lib/libz.a
+	LDFLAGS=
+endif
+
 CC=g++ -std=c++11
 SHELL = bash
 
@@ -24,16 +35,11 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 
 all: periculosum checker
 
-LIBS=build/magic.target/lib/libmagic.a \
-	build/bzip2.target/lib/libbz2_static.a \
-	build/lzma.target/lib/liblzma.a \
-	build/zlib.target/lib/libz.a
-
 periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} $^ -o $@
+	${CC} $^ ${LDFLAGS} -o $@
 
 checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} $^ -o $@
+	${CC} $^ ${LDFLAGS} -o $@
 
 process.o: process.cc process.h build/magic.target/include/magic.h
 	${CC} -c process.cc
@@ -45,7 +51,7 @@ magicclass.o: magicclass.cc magicclass.h
 	${CC} -c magicclass.cc	
 
 mgc.cc: magic.mgc
-	xxd -i magic.mgc > mgc.cc
+	xxd -i magic.mgc mgc.cc
 
 magic.mgc: build/magic.target/bin/file
 	mkdir -p magic
