@@ -15,13 +15,13 @@
 
 ifdef OS
     LIBS=build/magic.target/lib/libmagic.a
-	LDFLAGS=
+	FIX_ASLR=powershell fix_aslr.ps1
 else
 	LIBS=build/magic.target/lib/libmagic.a \
 		build/bzip2.target/lib/libbz2_static.a \
 		build/lzma.target/lib/liblzma.a \
 		build/zlib.target/lib/libz.a
-	LDFLAGS=
+	FIX_ASLR=echo "skip fix ASLR for not Windows"
 endif
 
 CC=g++ -std=c++11
@@ -36,10 +36,10 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 all: periculosum checker
 
 periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} $^ ${LDFLAGS} -o $@
+	${CC} $^ -o $@
 
 checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} $^ ${LDFLAGS} -o $@
+	${CC} $^ -o $@
 
 process.o: process.cc process.h build/magic.target/include/magic.h
 	${CC} -c process.cc
@@ -51,6 +51,7 @@ magicclass.o: magicclass.cc magicclass.h
 	${CC} -c magicclass.cc	
 
 mgc.cc: magic.mgc
+	${FIX_ASLR}
 	xxd -i magic.mgc mgc.cc
 
 magic.mgc: build/magic.target/bin/file
