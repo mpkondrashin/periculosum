@@ -15,7 +15,9 @@
 # build/magic.target/lib folder
 #
 
-set -e
+set -eu
+export PS4='> '
+set -x
 
 BASE=$(pwd)
 TEMP="build"

@@ -15,11 +15,12 @@
 # build/zlib.target/libz.a folder
 #
 
-set -e 
+set -eu
+export PS4='> '
+set -x
 
 cd build
 BUILD=$(pwd)
-
 
 if [ -d zlib/.git ]
 then

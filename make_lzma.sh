@@ -15,7 +15,9 @@
 # build/lzma.target/lib folder
 #
 
-set -e 
+set -eu
+export PS4='> '
+set -x
 
 cd build
 BUILD=$(pwd)
