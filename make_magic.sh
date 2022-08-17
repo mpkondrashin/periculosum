@@ -31,7 +31,6 @@ echo PWD
 pwd
 echo LS
 ls
-git config --global core.autocrlf input
 
 if [ -d file/.git ]
 then
@@ -41,6 +40,8 @@ else
     git clone https://github.com/file/file.git
     cd file
 fi
+
+git config core.autocrlf input
 
 autoreconf -f -i
 ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules
