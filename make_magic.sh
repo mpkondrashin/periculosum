@@ -31,20 +31,17 @@ echo PWD
 pwd
 echo LS
 ls
-echo HOME
-ls $HOME
-echo "LSLSLSLS"
+
 echo "GIT"
 which git
+echo "LSLSLSLS"
 
-ls C:/tools/
-ls C:/tools/cygwin/
-ls C:/tools/cygwin/home/
-ls C:/tools/cygwin/home/runneradmin/
+#ls C:/tools/
+#ls C:/tools/cygwin/
+#ls C:/tools/cygwin/home/
+#ls C:/tools/cygwin/home/runneradmin/
 
-
-
-git config --global core.autocrlf input
+git config core.autocrlf input
 
 if [ -d file/.git ]
 then
