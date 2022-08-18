@@ -41,6 +41,8 @@ echo "LSLSLSLS"
 #ls C:/tools/cygwin/home/
 #ls C:/tools/cygwin/home/runneradmin/
 
+mkdir -p "$(dirname "$(which git)")"
+
 git config core.autocrlf input
 
 if [ -d file/.git ]
