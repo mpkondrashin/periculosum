@@ -28,7 +28,7 @@ then
     git pull
     cd ..
 else
-    git clone https://github.com/libarchive/bzip2.git
+    git clone --depth 1 https://github.com/libarchive/bzip2.git
 fi
 
 mkdir -p bzip2.build

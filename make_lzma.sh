@@ -27,7 +27,7 @@ then
     cd liblzma
     git pull
 else
-    git clone https://github.com/kobolabs/liblzma.git
+    git clone --depth 1 https://github.com/kobolabs/liblzma.git
     cd liblzma
 fi
 

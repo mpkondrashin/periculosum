@@ -31,17 +31,30 @@ echo PWD
 pwd
 echo LS
 ls
+echo HOME
+ls $HOME
+echo "LSLSLSLS"
+echo "GIT"
+which git
+
+ls C:/tools/
+ls C:/tools/cygwin/
+ls C:/tools/cygwin/home/
+ls C:/tools/cygwin/home/runneradmin/
+
+
+
+git config --global core.autocrlf input
 
 if [ -d file/.git ]
 then
     cd file
     git pull
 else
-    git clone https://github.com/file/file.git
+    git clone --depth 1  https://github.com/file/file.git
     cd file
 fi
 
-git config core.autocrlf input
 
 autoreconf -f -i
 ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules
