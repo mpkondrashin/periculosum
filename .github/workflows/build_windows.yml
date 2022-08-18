@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2019
 # windows-latest
     steps:
-      - run: git config --global core.autocrlf input
+      - run: git config --global core.autocrlf input; which git
         name: Config Git
       - uses: actions/checkout@v3
         name: Check out repository code
