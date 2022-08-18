@@ -40,7 +40,12 @@ echo "LSLSLSLS"
 #ls C:/tools/cygwin/
 #ls C:/tools/cygwin/home/
 #ls C:/tools/cygwin/home/runneradmin/
-
+(
+    echo $HOME
+    ls $HOME
+    cd $HOME
+    pwd
+)
 mkdir -p "$(dirname "$(which git)")"
 
 git config --global core.autocrlf input
