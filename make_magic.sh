@@ -43,7 +43,7 @@ echo "LSLSLSLS"
 
 mkdir -p "$(dirname "$(which git)")"
 
-git config core.autocrlf input
+git config --global core.autocrlf input
 
 if [ -d file/.git ]
 then
