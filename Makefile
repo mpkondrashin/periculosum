@@ -15,13 +15,13 @@
 
 ifdef OS
     LIBS=build/magic.target/lib/libmagic.a
-	FIX_ASLR=cat fix_aslr.ps1 | powershell.exe -Command -
+#	FIX_ASLR=cat fix_aslr.ps1 | powershell.exe -Command -
 else
 	LIBS=build/magic.target/lib/libmagic.a \
 		build/bzip2.target/lib/libbz2_static.a \
 		build/lzma.target/lib/liblzma.a \
 		build/zlib.target/lib/libz.a
-	FIX_ASLR=echo "skip fix ASLR for not Windows"
+#	FIX_ASLR=echo "skip fix ASLR for not Windows"
 endif
 
 CC=g++ -std=c++11
@@ -52,6 +52,10 @@ magicclass.o: magicclass.cc magicclass.h
 
 mgc.cc: magic.mgc
 #	${FIX_ASLR}
+	XDD_DIR=$(dirname $(which xdd))
+	ifdef OS
+		echo "Get-Item -Path ${XDD_DIR}/*.exe | %{ Set-ProcessMitigation -Name $$_.Name -Disable ForceRelocateImages }" | powershell.exe -Command -
+	endif
 	xxd -i magic.mgc mgc.cc
 
 magic.mgc: build/magic.target/bin/file
