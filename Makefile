@@ -25,13 +25,16 @@ else
 endif
 
 CC=g++ -std=c++11
-SHELL = bash
+#SHELL = bash
 
 MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk \
 	archive     commands    filesystems macintosh   msooxml     rtf         uuencode \
 	audio       compress    flash       mail.news   os2         sgml        windows
 
-.PHONY: clean test
+.PHONY: clean test shell
+
+shell:
+	echo ${SHELL}
 
 all: periculosum checker
 
@@ -62,19 +65,19 @@ magic.mgc: build/magic.target/bin/file
 	build/magic.target/bin/file -C -m magic
 
 test: periculosum $(wildcard magic/*)
-	./check.sh
+	${SHELL} check.sh
 
 build/zlib.target/lib/libz.a:
-	./make_zlib.sh
+	${SHELL} make_zlib.sh
 
 build/bzip2.target/lib/libbz2_static.a:
-	./make_bzip2.sh
+	${SHELL} make_bzip2.sh
 
 build/lzma.target/lib/liblzma.a:
-	./make_lzma.sh
+	${SHELL} make_lzma.sh
 
 build/magic.target/include/magic.h build/magic.target/lib/libmagic.a:
-	./make_magic.sh
+	${SHELL} make_magic.sh
 
 clean:
 	rm -rf build magic

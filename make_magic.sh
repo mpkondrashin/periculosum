@@ -32,16 +32,12 @@ pwd
 echo LS
 ls
 
-echo "GIT"
-which git
-echo "LSLSLSLS"
-
 #ls C:/tools/
 #ls C:/tools/cygwin/
 #ls C:/tools/cygwin/home/
 #ls C:/tools/cygwin/home/runneradmin/
 
-mkdir -p "$HOME"
+#mkdir -p "$HOME"
 
 git config --global core.autocrlf input
 
