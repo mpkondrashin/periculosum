@@ -51,7 +51,7 @@ magicclass.o: magicclass.cc magicclass.h
 	${CC} -c magicclass.cc	
 
 mgc.cc: magic.mgc
-	${FIX_ASLR}
+#	${FIX_ASLR}
 	xxd -i magic.mgc mgc.cc
 
 magic.mgc: build/magic.target/bin/file
