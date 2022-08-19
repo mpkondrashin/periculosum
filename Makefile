@@ -53,8 +53,8 @@ magicclass.o: magicclass.cc magicclass.h
 mgc.cc: magic.mgc
 #	${FIX_ASLR}
 ifdef OS
-	echo $(which xdd)
-	echo $(which xdd.exe)
+	echo `which xdd`
+	echo `which xdd.exe`
 	XDD_DIR=$(dirname $(which xdd))
 	echo "Get-Item -Path ${XDD_DIR}/*.exe | %{ Set-ProcessMitigation -Name $$_.Name -Disable ForceRelocateImages }" | powershell.exe -Command -
 endif
