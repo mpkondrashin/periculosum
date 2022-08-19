@@ -39,7 +39,7 @@ jobs:
       - name: Test Checker
         run: cd goperic; go test -v
       - name: Pack release
-        run: base release_windows.sh
+        run: bash release_windows.sh
       - name: Release for Windows
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
