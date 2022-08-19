@@ -29,5 +29,5 @@ cp $(which cygstdc++-6.dll) periculosum
 cp $(which cygwin1.dll) periculosum
 cp $(which cyggcc_s-seh-1.dll) periculosum
 
-zip -r ../release_windows64.zip periculosum
+zip -r ../periculosum_windows64.zip periculosum
 
