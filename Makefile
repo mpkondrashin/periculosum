@@ -52,14 +52,14 @@ magicclass.o: magicclass.cc magicclass.h
 
 mgc.cc: magic.mgc
 #	${FIX_ASLR}
-ifdef OS
-	echo "xdd"
-	which xdd
-	echo $(shell which xdd)
-	echo $(shell which xdd.exe)
-	XDD_DIR=$(dirname $(which xdd))
-	echo "Get-Item -Path ${XDD_DIR}/*.exe | %{ Set-ProcessMitigation -Name $$_.Name -Disable ForceRelocateImages }" | powershell.exe -Command -
-endif
+#ifdef OS
+#	echo "xdd"
+#	which xdd
+#	echo $(shell which xdd)
+#	echo $(shell which xdd.exe)
+#	XDD_DIR=$(dirname $(which xdd))
+#	echo "Get-Item -Path ${XDD_DIR}/*.exe | %{ Set-ProcessMitigation -Name $$_.Name -Disable ForceRelocateImages }" | powershell.exe -Command -
+#endif
 	xxd -i magic.mgc mgc.cc
 
 magic.mgc: build/magic.target/bin/file

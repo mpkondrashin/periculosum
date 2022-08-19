@@ -27,6 +27,7 @@ jobs:
             automake
             gcc-g++
             zip
+            xxd
       - name: Build
         run: bash -c make
       - name: Test Periculosum
