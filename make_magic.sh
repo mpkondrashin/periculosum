@@ -1,4 +1,3 @@
-#!/bin/bash
 
 #
 # Copyright (C) 2022 Michael Kondrashin — All Rights Reserved
@@ -37,8 +36,7 @@ ls
 #ls C:/tools/cygwin/home/
 #ls C:/tools/cygwin/home/runneradmin/
 
-#mkdir -p "$HOME"
-
+mkdir -p "$HOME"
 git config --global core.autocrlf input
 
 if [ -d file/.git ]

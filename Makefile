@@ -33,9 +33,6 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 
 .PHONY: clean test shell
 
-shell:
-	echo ${SHELL}
-
 all: periculosum checker
 
 periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
@@ -78,6 +75,9 @@ build/lzma.target/lib/liblzma.a:
 
 build/magic.target/include/magic.h build/magic.target/lib/libmagic.a:
 	${SHELL} make_magic.sh
+
+shell:
+	echo ${SHELL}
 
 clean:
 	rm -rf build magic
