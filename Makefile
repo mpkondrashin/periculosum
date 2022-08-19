@@ -53,6 +53,8 @@ magicclass.o: magicclass.cc magicclass.h
 mgc.cc: magic.mgc
 #	${FIX_ASLR}
 ifdef OS
+	echo "xdd"
+	which xdd
 	echo $(shell which xdd)
 	echo $(shell which xdd.exe)
 	XDD_DIR=$(dirname $(which xdd))
