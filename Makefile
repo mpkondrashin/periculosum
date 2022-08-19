@@ -25,7 +25,7 @@ else
 endif
 
 CC=g++ -std=c++11
-#SHELL = bash
+SHELL = bash
 
 MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk \
 	archive     commands    filesystems macintosh   msooxml     rtf         uuencode \
