@@ -30,4 +30,3 @@ cp $(which cygwin1.dll) periculosum
 cp $(which cyggcc_s-seh-1.dll) periculosum
 
 zip -r ../periculosum_windows64.zip periculosum
-

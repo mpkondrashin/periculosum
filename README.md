@@ -10,7 +10,8 @@ Program is based on list of supported file formats by [Trend Micro Deep Discover
 ## Build
 
 Build makefile and scripts are adopted for macOS, Linux, and Windows:
-**Note:** To build Periculosum for Windows [Cygwin](https://www.cygwin.com/) should be installed with following packages: base, make, autoreconf, libtool, autoconf, automake, gcc-g++, zip, xxd.
+
+**Note:** To build Periculosum for Windows, [Cygwin](https://www.cygwin.com/) should be installed with following packages: base, make, autoreconf, libtool, autoconf, automake, gcc-g++, zip, xxd.
 
 ```code
 git clone https://github.com/mpkondrashin/periculosum.git

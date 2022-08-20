@@ -17,9 +17,10 @@ jobs:
       - name: Test Checker
         run: cd goperic; go test -v
       - name: Pack release
-        run: tar cfvz periculosum_linux64.tgz periculosum checker LICENSE README.md
+        run: bash release_linux.sh
+#        run: tar cfvz periculosum_linux64.tgz periculosum checker LICENSE README.md
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: periculosum_linux64.tgz
+          files: periculosum_linux64.zip

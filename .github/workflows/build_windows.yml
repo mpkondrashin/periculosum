@@ -44,4 +44,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: release_windows64.zip
+          files: periculosum_windows64.zip
