@@ -48,6 +48,7 @@ static const char *mime_types[] = {
     "application/x-7z-compressed",
     "application/x-bzip2",
     "application/x-dosexec",
+    "application/x-pie-executable",
     "application/x-executable",
     "application/x-hwp",
     "application/x-iso9660-image",
