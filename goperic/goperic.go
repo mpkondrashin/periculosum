@@ -23,15 +23,15 @@ import (
 
 var ErrUnknownResponse = errors.New("unknown response")
 
-type Periclosum struct {
+type Periculosum struct {
 	cmd    *exec.Cmd
 	stdin  io.WriteCloser
 	stdout io.ReadCloser
 	reader *bufio.Reader
 }
 
-func NewPericlosum(path string) (p *Periclosum, err error) {
-	p = &Periclosum{}
+func NewPericulosum(path string) (p *Periculosum, err error) {
+	p = &Periculosum{}
 	p.cmd = exec.Command(path)
 	p.stdin, err = p.cmd.StdinPipe()
 	if err != nil {
@@ -49,13 +49,13 @@ func NewPericlosum(path string) (p *Periclosum, err error) {
 	return p, nil
 }
 
-func (p *Periclosum) Close() error {
+func (p *Periculosum) Close() error {
 	_ = p.stdin.Close()
 	_ = p.stdout.Close()
 	return p.cmd.Process.Kill()
 }
 
-func (p *Periclosum) Check(filePath string) (bool, error) {
+func (p *Periculosum) Check(filePath string) (bool, error) {
 	p.stdin.Write([]byte(filePath + "\n"))
 	//time.Sleep(500 * time.Millisecond)
 	line, _, err := p.reader.ReadLine()

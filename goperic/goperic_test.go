@@ -21,7 +21,7 @@ import (
 )
 
 func TestGoPeric(t *testing.T) {
-	p, err := NewPericlosum("../checker")
+	p, err := NewPericulosum("../checker")
 	if err != nil {
 		t.Fatal(err)
 	}
