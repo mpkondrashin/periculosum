@@ -31,6 +31,7 @@ const char *last_error() {
 static const char *mime_types[] = {
     "application/gzip",
     "application/java-archive",
+    "application/mac-binhex40",
     "application/msword",
     "application/pdf",
     "application/vnd.ms-cab-compressed",
@@ -45,10 +46,14 @@ static const char *mime_types[] = {
     "application/vnd.oasis.opendocument.text",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/vnd.symbian.install",
     "application/x-7z-compressed",
+    "application/x-ace-compressed",
+    "application/x-arc",
+    "application/x-arj",
     "application/x-bzip2",
+    "application/x-chrome-extension",
     "application/x-dosexec",
-    "application/x-pie-executable",
     "application/x-executable",
     "application/x-hwp",
     "application/x-iso9660-image",
@@ -59,12 +64,15 @@ static const char *mime_types[] = {
     "application/x-ms-wim",
     "application/x-msi",
     "application/x-mswinurl",
+    "application/x-pie-executable",
     "application/x-rar",
     "application/x-shockwave-flash",
+    "application/x-stuffit",
     "application/x-sylk",
     "application/x-tar",
     "application/x-xar",
     "application/x-xz",
+    "application/zip",
     "image/svg+xml",
     "message/rfc822",
     "text/csv",
@@ -73,15 +81,7 @@ static const char *mime_types[] = {
     "text/x-msdos-batch",
     "text/x-shellscript",
     "text/xml",
-    "video/quicktime",
-    "application/x-arj",
-    "application/x-ace-compressed",
-    "application/mac-binhex40",
-    "application/x-chrome-extension",
-    "application/x-arc",
-    "application/vnd.symbian.install",
-    "application/x-stuffit",
-    "application/zip"
+    "video/quicktime"
 };
 
 static const char *text_plain_types[] = {
@@ -100,6 +100,8 @@ static const char *text_plain_extensions[] = {
     "iqy",
     "vbe"};
 */
+
+#define MAX_EXT_LEN 6
 
 static const char *extensions[] = {
     "bat",
@@ -136,16 +138,26 @@ void log_it(const char *format, ...) {
     va_end(args);
 }
 
-int check_mime_type(const char *mime_type) {
-    for (int i = 0; i < sizeof(mime_types) / sizeof(mime_types[0]); i++)
-    {
-        if (strcmp(mime_types[i], mime_type) == 0)
-        {
-            log_it("Matched MIME type: %s", mime_type);
+int binary_search(const char *needle, const char *haystack[], int haystack_length)
+{
+    int i = 0, j = haystack_length - 1;
+    while (i <= j) {
+        int k = i + ((j - i) / 2);
+        int d = strcmp(needle, haystack[k]);
+        if ( d == 0 ) {
             return 1;
+        }
+        if ( d > 0 ) {
+            i = k + 1;
+        } else {
+            j = k - 1;
         }
     }
     return 0;
+}
+
+int check_mime_type(const char *mime_type) {
+    return binary_search(mime_type, mime_types, sizeof(mime_types) / sizeof(mime_types[0]));
 }
 
 int check_text_plain_types(const char *type)
@@ -163,20 +175,30 @@ int check_text_plain_types(const char *type)
 
 int check_extension(const char *list[], int len, const char *filename)
 {
-    for (int i = 0; i < len; i++)
-    {
-        const char *dot = strrchr(filename, '.');
-        if (!dot)
-        {
-            return 0;
+
+    const char *dot = strrchr(filename, '.');
+    if (!dot) return 0;
+    dot++;
+    char ext[MAX_EXT_LEN];
+    for(int i = 0; ; i++){
+        ext[i] = tolower(dot[i]);
+        if ( dot[i] == '\0' )
+            break;
+        if ( i == MAX_EXT_LEN-1 ) {
+            ext[MAX_EXT_LEN-1] = 0;
+            break;
         }
+    }
+    return binary_search(ext, list, len);
+    /*for (int i = 0; i < len; i++)
+    {
         if (!strcasecmp(dot+1, list[i]))
         {
             log_it("Matched file extension: %s", filename);
             return 1;
         }
     }
-    return 0;
+    return 0;*/
 }
 
 int check_octet_stream_extensions(const char *filename)
@@ -231,15 +253,9 @@ int is_supported(const char *filename, Magic *magicMime, Magic *magicType)
         {
             return 1;
         }
-        //const char *type = get_type(filename);
-        //std::cout << "Supported type: " << type << std::endl;
-        //return check_octet_stream_types(type);
     }
     if (!strcmp(mime, "text/plain"))
     {
-        //if (check_text_plain_extensions(filename) ) {
-       //     return 1;
-        //}
         const char *type  = magicType->Detect(filename);
         return check_text_plain_types(type);
     }

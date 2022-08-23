@@ -20,9 +20,6 @@
 #include "process.h"
 #include "magicclass.h"
 
-//const char *DEFAULT_MAGIC_DATABASE =  "magic.mgc";
-//const char *magic_database = DEFAULT_MAGIC_DATABASE;
-
 #ifndef PATH_MAX
 #define PATH_MAX        4096 
 #endif
@@ -70,8 +67,6 @@ int main(int argc, char **argv)
     try {
         Magic *magicMime = new Magic(MAGIC_MIME_TYPE);
         Magic *magicType = new Magic();
-//        Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
-  //      Magic *magicType = new Magic(magic_database);
         for(;;) {
             char filename[PATH_MAX];
             if (!fgets(filename,  PATH_MAX, stdin) ) {
@@ -80,11 +75,13 @@ int main(int argc, char **argv)
             filename[strcspn(filename, "\r\n")] = '\0'; 
             int rc = is_supported(filename, magicMime, magicType);
             printf("%d\n", rc);
-            fflush(stdout);
+            rc = fflush(stdout);
+            if( rc != 0 ) {
+                return 101;
+            }
         }
     } catch (std::exception &e) {
         fprintf(stderr, "%s\n", e.what());
-        return 100;
+        return 102;
     }
-
 }
