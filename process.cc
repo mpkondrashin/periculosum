@@ -118,6 +118,7 @@ static const char *extensions[] = {
     "mht",
     "mhtml",
     "ps1",
+    "shtml",
     "slk",
     "svg",
     "url",
