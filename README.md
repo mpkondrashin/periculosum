@@ -13,7 +13,7 @@ Build makefile and scripts are adopted for macOS, Linux, and Windows:
 
 **Note:** To build Periculosum for Windows, [Cygwin](https://www.cygwin.com/) should be installed with following packages: base, make, autoreconf, libtool, autoconf, automake, gcc-g++, zip, xxd.
 
-**Note:** To build Periculosum on macPS, follwing packages should be installed: Xcode Command Line Tools, and (using homebrew) libtool, automake 
+**Note:** To build Periculosum on macOS, follwing packages should be installed: Xcode Command Line Tools, and (using homebrew) libtool, automake 
 
 ```code
 git clone https://github.com/mpkondrashin/periculosum.git
