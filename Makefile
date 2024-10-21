@@ -25,6 +25,7 @@ else
 endif
 
 CC=g++ -std=c++11
+CFLAGS=-mmacosx-version-min=14.5
 SHELL = bash
 
 MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk \
@@ -36,10 +37,10 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 all: periculosum checker
 
 periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} $^ -o $@
+	${CC} ${CFLAGS} $^ -o $@
 
 checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} $^ -o $@
+	${CC} ${CFLAGS} $^ -o $@
 
 process.o: process.cc process.h build/magic.target/include/magic.h
 	${CC} -c process.cc

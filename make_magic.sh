@@ -26,9 +26,9 @@ mkdir -p ${TEMP}
 cd ${TEMP}
 echo "ENV"
 env
-echo PWD
+echo "PWD"
 pwd
-echo LS
+echo "LS"
 ls
 
 #ls C:/tools/
@@ -51,6 +51,6 @@ fi
 
 autoreconf -f -i
 ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules
-make -j4
+make
 make -C tests check
 make install
