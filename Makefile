@@ -28,7 +28,7 @@ CC=g++ -std=c++11
 ifeq ($(shell uname),Darwin)
     CFLAGS=-mmacosx-version-min=14.5
 else
-    CFLAGS=
+    CFLAGS=-lzstd
 endif
 
 SHELL = bash

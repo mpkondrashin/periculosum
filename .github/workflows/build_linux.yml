@@ -4,8 +4,6 @@ jobs:
   Build-Linux-Release:
     runs-on: ubuntu-latest
     steps:
-      - name: Instal zstd
-        run: sudo apt-get -y install zstd
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Build
