@@ -19,12 +19,8 @@ ifdef OS
 else
 	LIBS=build/magic.target/lib/libmagic.a \
 		build/lzma.target/lib/liblzma.a \
+		build/bzip2.target/lib/libbz2_static.a \
 		build/zlib.target/lib/libz.a
-	ifneq ("$(wildcard $(build/bzip2.target/lib/libbz2_static.a))","")
-    	LIBS+=build/bzip2.target/lib/libbz2_static.a
-	else
-    	LIBS+=build/bzip2.target/lib64/libbz2_static.a
-	endif
 endif
 
 CC=g++ -std=c++11
