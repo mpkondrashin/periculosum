@@ -31,11 +31,6 @@ else
     cd zlib
 fi
 
-
-
 ./configure --prefix=$BUILD/zlib.target --static
 make
 make install
-
-ls -lR $BUILD/zlib.target
-

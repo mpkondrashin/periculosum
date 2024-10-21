@@ -54,3 +54,5 @@ autoreconf -f -i
 make
 make -C tests check
 make install
+
+ls -lR ${BASE}/${PREFIX} 
