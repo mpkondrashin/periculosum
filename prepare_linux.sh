@@ -35,4 +35,8 @@ elif command -v apt-get &> /dev/null;  then
         make \
         zlib-devel \
         cmake
+else
+    echo "Unsupported Linux distribution."
+    exit 1
 fi
+
