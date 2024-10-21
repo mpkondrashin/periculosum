@@ -19,6 +19,7 @@ ifdef OS
 else
 	LIBS=build/magic.target/lib/libmagic.a \
 		build/bzip2.target/lib/libbz2_static.a \
+		build/bzip2.target/lib64/libbz2_static.a \
 		build/lzma.target/lib/liblzma.a \
 		build/zlib.target/lib/libz.a
 #	FIX_ASLR=echo "skip fix ASLR for not Windows"
