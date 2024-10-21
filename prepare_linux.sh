@@ -25,7 +25,7 @@ if command -v apt-get &> /dev/null; then
         make \
         zlib1g-dev \
         cmake
-elif command -v apt-get &> /dev/null;  then
+elif command -v yum &> /dev/null;  then
     yum update
     yum install -y \
         automake \
