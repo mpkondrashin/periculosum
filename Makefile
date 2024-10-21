@@ -25,7 +25,13 @@ else
 endif
 
 CC=g++ -std=c++11
-CFLAGS=-mmacosx-version-min=14.5
+
+ifeq ($(shell uname),Darwin)
+    CFLAGS=-mmacosx-version-min=14.5
+else
+    CFLAGS=
+endif
+
 SHELL = bash
 
 MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk \

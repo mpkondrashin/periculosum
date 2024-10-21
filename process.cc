@@ -47,6 +47,7 @@ static const char *mime_types[] = {
     "application/vnd.oasis.opendocument.text",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/vnd.rar",
     "application/vnd.symbian.install",
     "application/x-7z-compressed",
     "application/x-ace-compressed",
