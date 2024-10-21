@@ -42,7 +42,7 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 all: periculosum checker
 
 periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} ${CFLAGS} $^ -o $@ -lzstd
+	${CC} ${CFLAGS} $^ -o $@
 
 checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
 	${CC} ${CFLAGS} $^ -o $@ 
