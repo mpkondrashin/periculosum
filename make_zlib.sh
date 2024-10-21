@@ -37,5 +37,5 @@ fi
 make
 make install
 
-ls -l $BUILD/zlib.target
+ls -lR $BUILD/zlib.target
 
