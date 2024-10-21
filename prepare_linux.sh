@@ -15,11 +15,24 @@
 
 set -e
 
-apt-get install -y \
-    automake \
-    gcc \
-    g++ \
-    libtool \
-    make \
-    zlib1g-dev \
-    cmake
+if command -v apt-get &> /dev/null; then
+    apt-get update
+    apt-get install -y \
+        automake \
+        gcc \
+        g++ \
+        libtool \
+        make \
+        zlib1g-dev \
+        cmake
+elif command -v apt-get &> /dev/null;  then
+    yum update
+    yum install -y \
+        automake \
+        gcc \
+        g++ \
+        libtool \
+        make \
+        zlib-devel \
+        cmake
+fi
