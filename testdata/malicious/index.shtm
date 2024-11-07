@@ -1,0 +1,4 @@
+<!--#jdbc name="result2" select="SELECT * FROM users"
+          user="bmahe" password=""
+          url="jdbc:msql://www43.inria.fr:4333/users"
+          driver="com.imaginary.sql.msql.MsqlDriver"  -->
