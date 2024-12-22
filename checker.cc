@@ -73,7 +73,7 @@ int main(int argc, char **argv)
                 return 100;
             }
             filename[strcspn(filename, "\r\n")] = '\0'; 
-            int rc = is_supported(filename, magicMime, magicType);
+            int rc = is_supported(filename, filename, magicMime, magicType);
             printf("%d\n", rc);
             rc = fflush(stdout);
             if( rc != 0 ) {

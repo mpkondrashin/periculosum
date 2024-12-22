@@ -16,7 +16,7 @@
 
 #include "magicclass.h"
 
-int is_supported(const char *filename, Magic *magicMime, Magic *magicType);
+int is_supported(const char *filename, const char *trueFilename, Magic *magicMime, Magic *magicType);
 const char *last_error();
 extern int logging;
 

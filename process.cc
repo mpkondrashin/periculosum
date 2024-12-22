@@ -172,7 +172,7 @@ int check_text_plain_types(const char *type)
     {
         if (!strncmp(text_plain_types[i], type, strlen(text_plain_types[i])))
         {
-            log_it("Matched text/plain type prefix: %s", text_plain_types[i]);
+            log_it("Matched text/plain type: %s", text_plain_types[i]);
             return 1;
         }
     }
@@ -239,24 +239,28 @@ const char *get_magic(const char *database, const char *filename, int flags)
 }
 */
 
-int is_supported(const char *filename, Magic *magicMime, Magic *magicType)
+int is_supported(const char *filename, const char *trueFilename, Magic *magicMime, Magic *magicType)
 {
     log_it("File name: %s", filename);
+    log_it("True file name: %s", trueFilename);
     const int len = sizeof(extensions) / sizeof(extensions[0]);
-    int rc = check_extension(extensions, len, filename);
+    int rc = check_extension(extensions, len, trueFilename);
     if (rc) {
-            return 1;
+        log_it("Matched file extension: %s", trueFilename);
+        return 1;
     }
     const char *mime = magicMime->Detect(filename);
-    log_it("MIME type: %s", mime);
+    log_it("Detected MIME type: %s", mime);
     if (check_mime_type(mime))
     {
+        log_it("Matched MIME type: %s", mime);
         return 1;
     }
     if (!strcmp(mime, "application/octet-stream"))
     {
-        if (check_octet_stream_extensions(filename))
+        if (check_octet_stream_extensions(trueFilename))
         {
+            log_it("Matched octet-stream extension: %s", trueFilename);
             return 1;
         }
     }

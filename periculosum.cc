@@ -22,6 +22,7 @@ const char *DEFAULT_MAGIC_DATABASE =  "magic.mgc";
 const char *magic_database = DEFAULT_MAGIC_DATABASE;
 
 const char *filename = NULL;
+const char *trueFilename = NULL;
 
 void usage() {
     fprintf(stderr, "Usage: supported [-m filename] [-l] [-h] filename\n");
@@ -57,10 +58,14 @@ void parse_args(int argc, char **argv) {
                 break;
         }
     }
-    if (optind != argc-1) {
+    if (optind < argc-2 || optind >= argc) {
         usage();
     }
     filename = argv[optind];
+    trueFilename = filename;
+    if (optind == argc-2) {
+        trueFilename = argv[optind+1];        
+    }
 }
 
 int main(int argc, char **argv)
@@ -68,9 +73,7 @@ int main(int argc, char **argv)
     parse_args(argc, argv);
     Magic *magicMime = new Magic(MAGIC_MIME_TYPE);
     Magic *magicType = new Magic();
-  //  Magic *magicMime = new Magic(magic_database, MAGIC_MIME_TYPE);
-//    Magic *magicType = new Magic(magic_database);
-    int rc = is_supported(filename, magicMime, magicType);
+    int rc = is_supported(filename, trueFilename, magicMime, magicType);
     if (rc == ERROR_OCCURED) {
         fprintf(stderr, "%s\n", last_error());
     }
