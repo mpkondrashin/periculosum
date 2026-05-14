@@ -50,7 +50,7 @@ fi
 
 
 autoreconf -f -i
-./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules
+./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules --without-zstd
 make
 make -C tests check
 make install
