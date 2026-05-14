@@ -110,6 +110,7 @@ static const char *text_plain_extensions[] = {
 static const char *extensions[] = {
     "bat",
     "cmd",
+    "com",
     "csv",
     "hta",
     "htm",
@@ -196,15 +197,6 @@ int check_extension(const char *list[], int len, const char *filename)
         }
     }
     return binary_search(ext, list, len);
-    /*for (int i = 0; i < len; i++)
-    {
-        if (!strcasecmp(dot+1, list[i]))
-        {
-            log_it("Matched file extension: %s", filename);
-            return 1;
-        }
-    }
-    return 0;*/
 }
 
 int check_octet_stream_extensions(const char *filename)
