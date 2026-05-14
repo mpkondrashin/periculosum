@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2022 Michael Kondrashin — All Rights Reserved
+ Copyright (C) 2022-2026 Michael Kondrashin — All Rights Reserved
  You may use, distribute and modify this code under the
  terms of the MIT license.
  You should have received a copy of the MIT license with

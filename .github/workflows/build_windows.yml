@@ -6,7 +6,7 @@ on: [push]
 jobs:
   Build-Windows-Release:
     name: Build & Test & Pack
-    runs-on: windows-2019
+    runs-on: windows-2022
 # windows-latest
     steps:
       - run: git config --global core.autocrlf input
