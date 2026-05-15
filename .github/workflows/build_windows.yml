@@ -27,6 +27,7 @@ jobs:
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-gcc-libs
             mingw-w64-x86_64-libgnurx
+            mingw-w64-x86_64-go
             zip
             vim
       - name: Build
@@ -35,9 +36,8 @@ jobs:
       - name: Test Periculosum
         shell: msys2 {0}
         run: make test
-      - uses: actions/setup-go@v2
-        name: Setup Go
       - name: Check Go version
+        shell: msys2 {0}
         run: go version
       - name: Test Checker
         shell: msys2 {0}
