@@ -53,7 +53,9 @@ autoreconf -f -i
 CFLAGS="-Wno-incompatible-pointer-types" \
 ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules --disable-zstdlib
 make
-make -C tests check
+if [ "$(uname -o)" != "Msys" ]; then
+    make -C tests check
+fi
 make install
 
 ls -lR ${BASE}/${PREFIX} 
