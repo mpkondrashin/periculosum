@@ -50,6 +50,7 @@ fi
 
 
 autoreconf -f -i
+CFLAGS="-Wno-incompatible-pointer-types" \
 ./configure --prefix=${BASE}/${PREFIX}  --enable-static --disable-silent-rules --disable-zstdlib
 make
 make -C tests check
