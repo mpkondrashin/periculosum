@@ -14,13 +14,15 @@
 #
 
 ifdef OS
-    LIBS=build/magic.target/lib/libmagic.a -lgnurx -lshlwapi
+    LIBS=build/magic.target/lib/libmagic.a
+    LDFLAGS=-lgnurx -lshlwapi
 #	FIX_ASLR=cat fix_aslr.ps1 | powershell.exe -Command -
 else
 	LIBS=build/magic.target/lib/libmagic.a \
 		build/lzma.target/lib/liblzma.a \
 		build/bzip2.target/lib/libbz2_static.a \
 		build/zlib.target/lib/libz.a
+	LDFLAGS=
 endif
 
 CC=g++ -std=c++11
@@ -42,10 +44,10 @@ MGC=animation   cafebabe    elf         mach        msdos       pdf         sylk
 all: periculosum checker
 
 periculosum: periculosum.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} ${CFLAGS} $^ -o $@
+	${CC} ${CFLAGS} $^ ${LDFLAGS} -o $@
 
 checker: checker.cc process.o mgc.o magicclass.o ${LIBS}
-	${CC} ${CFLAGS} $^ -o $@ 
+	${CC} ${CFLAGS} $^ ${LDFLAGS} -o $@
 
 process.o: process.cc process.h build/magic.target/include/magic.h
 	${CC} -c process.cc
