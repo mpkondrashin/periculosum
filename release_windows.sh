@@ -25,8 +25,5 @@ cp ../periculosum.exe periculosum
 cp ../checker.exe periculosum
 cp ../LICENSE periculosum
 cp ../README.md periculosum
-cp $(which cygstdc++-6.dll) periculosum
-cp $(which cygwin1.dll) periculosum
-cp $(which cyggcc_s-seh-1.dll) periculosum
 
 zip -r ../periculosum_windows64.zip periculosum

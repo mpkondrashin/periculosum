@@ -13,24 +13,25 @@ jobs:
         name: Config Git
       - uses: actions/checkout@v3
         name: Check out repository code
-#      - uses: cygwin/cygwin-install-action@master
-      - name: Set up Cygwin
-        uses: egor-tensin/setup-cygwin@v3
+      - name: Set up MSYS2
+        uses: msys2/setup-msys2@v2
         with:
-          platform: x64
-          packages: >-
-            base
+          msystem: MINGW64
+          update: true
+          install: >-
             make
-            autoreconf
-            libtool
             autoconf
             automake
-            gcc-g++
+            libtool
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-gcc-libs
             zip
-            xxd
+            vim
       - name: Build
-        run: bash -c make
+        shell: msys2 {0}
+        run: make
       - name: Test Periculosum
+        shell: msys2 {0}
         run: make test
       - uses: actions/setup-go@v2
         name: Setup Go
@@ -39,6 +40,7 @@ jobs:
       - name: Test Checker
         run: cd goperic; go test -v
       - name: Pack release
+        shell: msys2 {0}
         run: bash release_windows.sh
       - name: Release for Windows
         uses: softprops/action-gh-release@v1
