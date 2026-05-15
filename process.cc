@@ -34,6 +34,7 @@ static const char *mime_types[] = {
     "application/mac-binhex40",
     "application/msword",
     "application/pdf",
+    "application/vnd.android.package-archive",
     "application/vnd.microsoft.portable-executable",
     "application/vnd.ms-cab-compressed",
     "application/vnd.ms-excel",
@@ -108,6 +109,7 @@ static const char *text_plain_extensions[] = {
 #define MAX_EXT_LEN 6
 
 static const char *extensions[] = {
+    "apk",
     "bat",
     "cmd",
     "com",
