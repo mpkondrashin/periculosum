@@ -14,7 +14,7 @@
 #
 
 ifdef OS
-    LIBS=build/magic.target/lib/libmagic.a
+    LIBS=build/magic.target/lib/libmagic.a -lgnurx -lshlwapi
 #	FIX_ASLR=cat fix_aslr.ps1 | powershell.exe -Command -
 else
 	LIBS=build/magic.target/lib/libmagic.a \
