@@ -36,6 +36,17 @@ jobs:
       - name: Test Periculosum
         shell: msys2 {0}
         run: make test
+
+      - name: Locate objdump
+        shell: pwsh
+        run: |
+          Get-ChildItem C:\msys64 -Recurse objdump.exe
+
+      - name: Show DLL dependencies
+        shell: pwsh
+        run: |
+          & "C:\msys64\mingw64\bin\objdump.exe" -p .\periculosum.exe | Select-String "DLL Name"
+
       - name: Smoke test without MinGW
         shell: pwsh
         run: |
