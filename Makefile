@@ -15,7 +15,7 @@
 
 ifdef OS
     LIBS=build/magic.target/lib/libmagic.a
-    LDFLAGS=-Wl,-Bstatic -lgnurx -lwinpthread -Wl,-Bdynamic -lshlwapi -static-libgcc -static-libstdc++
+    LDFLAGS=-static -lgnurx -lshlwapi
 #	FIX_ASLR=cat fix_aslr.ps1 | powershell.exe -Command -
 else
 	LIBS=build/magic.target/lib/libmagic.a \
