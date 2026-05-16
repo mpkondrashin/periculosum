@@ -36,11 +36,15 @@ jobs:
       - name: Test Periculosum
         shell: msys2 {0}
         run: make test
+      - name: Locate executable
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse *.exe
       - name: Smoke test without MinGW
         shell: pwsh
         run: |
           mkdir clean
-          Copy-Item .\build\periculosum.exe clean\
+          Copy-Item .\periculosum.exe clean\
           cd clean
           $env:PATH = "C:\Windows\System32;C:\Windows"         
           .\periculosum.exe          
