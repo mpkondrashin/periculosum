@@ -48,7 +48,8 @@ jobs:
       - name: Show DLL dependencies
         shell: pwsh
         run: |
-          & "C:\msys64\mingw64\bin\objdump.exe" -p .\periculosum.exe | Select-String "DLL Name"
+          & "C:\mingw64\bin\objdump.exe" -p .\periculosum.exe |
+            Select-String "DLL Name"
 
       - name: Smoke test without MinGW
         shell: pwsh
