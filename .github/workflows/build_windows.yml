@@ -36,6 +36,14 @@ jobs:
       - name: Test Periculosum
         shell: msys2 {0}
         run: make test
+      - name: Smoke test without MinGW
+        shell: pwsh
+        run: |
+          mkdir clean
+          Copy-Item .\build\periculosum.exe clean\
+          cd clean
+          $env:PATH = "C:\Windows\System32;C:\Windows"         
+          .\periculosum.exe          
       - name: Check Go version
         shell: msys2 {0}
         run: go version

@@ -97,15 +97,6 @@ static const char *octet_stream_extensions[] = {
     "com" // min/max size
 };
 
-/*
-static const char *text_plain_extensions[] = {
-    "js",
-    "ps1",
-    "vbs",
-    "iqy",
-    "vbe"};
-*/
-
 #define MAX_EXT_LEN 6
 
 static const char *extensions[] = {
@@ -206,32 +197,6 @@ int check_octet_stream_extensions(const char *filename)
     const int len = sizeof(octet_stream_extensions) / sizeof(octet_stream_extensions[0]);
     return check_extension(octet_stream_extensions, len, filename);
 }
-/*
-int check_text_plain_extensions(const char *filename)
-{
-    const int len = sizeof(text_plain_extensions) / sizeof(text_plain_extensions[0]);
-    return check_extension(text_plain_extensions, len, filename);
-}
-*/
-/*
-const char *get_magic(const char *database, const char *filename, int flags)
-{
-    magic_t mime_cookie = magic_open(flags);
-    if (mime_cookie == NULL)
-    {
-        last_error_message = "Create magic cookie failed";
-        return NULL;
-    }
-    if (magic_load(mime_cookie, database) != 0)
-    {
-        magic_close(mime_cookie);
-        last_error_message = magic_error(mime_cookie);
-        return NULL;
-    }
-    // magic_close(cookie);
-    return magic_file(mime_cookie, filename);
-}
-*/
 
 int is_supported(const char *filename, const char *trueFilename, Magic *magicMime, Magic *magicType)
 {
