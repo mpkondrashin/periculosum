@@ -36,14 +36,6 @@ jobs:
       - name: Test Periculosum
         shell: msys2 {0}
         run: make test
-      - name: Find objdump
-        shell: pwsh
-        run: |
-          Get-ChildItem C:\ -Recurse objdump.exe -ErrorAction SilentlyContinue
-      - name: Locate objdump
-        shell: pwsh
-        run: |
-          Get-ChildItem C:\msys64 -Recurse objdump.exe
 
       - name: Show DLL dependencies
         shell: pwsh
