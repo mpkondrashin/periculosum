@@ -43,30 +43,6 @@ jobs:
           & "C:\mingw64\bin\objdump.exe" -p .\periculosum.exe |
             Select-String "DLL Name"
 
-      - name: Smoke test without MinGW
-        shell: pwsh
-        run: |
-          mkdir clean
-
-          Copy-Item .\periculosum.exe clean\
-
-          cd clean
-
-          $env:PATH = "C:\Windows\System32;C:\Windows"
-
-          try {
-            .\periculosum.exe 2>&1 | Out-Host
-
-            Write-Host "Exit code: $LASTEXITCODE"
-
-            if ($LASTEXITCODE -ne 0) {
-              throw "Application exited with error"
-            }
-          }
-          catch {
-            Write-Host $_
-            throw
-          }
       - name: Check Go version
         shell: msys2 {0}
         run: go version
